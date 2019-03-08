@@ -2,10 +2,28 @@ import React, { Component } from 'react';
 import styles from './Card.module.scss';
 import ImageGallery from 'react-image-gallery';
 import '../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
-
+import GoogleMapReact from 'google-map-react';
 
 class Card extends Component {
 
+  static defaultProps = {
+    center: {
+      lat: 46.573484,
+      lng: 30.799630
+    },
+    zoom: 15
+  };
+
+  renderMarkers(map, maps) {
+    new maps.Marker({
+      position: {
+        lat: 46.573484,
+        lng: 30.799630
+      },
+      map,
+      title: 'Hello World!'
+    });
+  }
 
   render() {
 
@@ -27,6 +45,8 @@ class Card extends Component {
       }
     ]
 
+
+
     return (
       <div className={styles.card}>
         <h1 className={styles.card__header}>Заголовок poskot travel</h1>
@@ -40,7 +60,18 @@ class Card extends Component {
           showBullets
           additionalClass={styles.card__slider}
         />
-        <div>Карта</div>
+        <div className={styles.card__map}>
+          <div className={styles['card__map-wrapper']}>
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: 'AIzaSyAPSumGDQfNDZT9TlkfWoROc5V1who_t9M' }}
+              defaultCenter={this.props.center}
+              defaultZoom={this.props.zoom}
+              yesIWantToUseGoogleMapApiInternals
+              onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
+            />
+          </div>
+
+        </div>
       </div>
     );
   }
