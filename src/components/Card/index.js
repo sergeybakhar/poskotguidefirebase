@@ -3,6 +3,7 @@ import styles from './Card.module.scss';
 import ImageGallery from 'react-image-gallery';
 import '../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 import GoogleMapReact from 'google-map-react';
+import { FacebookProvider, Comments } from 'react-facebook';
 
 class Card extends Component {
 
@@ -70,8 +71,13 @@ class Card extends Component {
               onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
             />
           </div>
-
         </div>
+        <div className={styles.card__fb}>
+          <FacebookProvider appId="1045257252264946" language='ru_RU'  >
+            <Comments href="http://localhost:3000/" width='50%' numPosts='3' orderBy='social' />
+          </FacebookProvider>
+        </div>
+
       </div>
     );
   }
