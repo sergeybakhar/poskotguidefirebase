@@ -27,16 +27,16 @@
         }
     }
     &__slider {
-        margin-bottom: 35px;
-        border: 1px solid #e9ebee;
+        margin-bottom: 40px;
+        border: 1px solid $borderColor;
     }
     &__map {
         position: relative;
         padding-bottom: 75%;
         height: 0;
         overflow: hidden;
-        margin-bottom: 35px;
-        border: 1px solid #e9ebee;
+        margin-bottom: 40px;
+        border: 1px solid $borderColor;
     }
     &__map-inner {
         position: absolute;
@@ -46,7 +46,7 @@
         height: 100%;
     }
     &__fb-comments {
-        border: 1px solid #e9ebee;
+        border: 1px solid $borderColor;
         padding: 10px 15px;
         @media (max-width: 450px) {
             padding: 0;
@@ -57,7 +57,7 @@
         flex-direction: row;
         justify-content: space-between;
         max-width: 220px;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
         @media (max-width: 450px) {
             max-width: 100%;
             justify-content: space-around;

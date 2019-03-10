@@ -1,0 +1,39 @@
+@import '../../scss/main';
+.header {
+    // background: #1A5690;
+    padding: 20px 20px;
+    font-family: $font;
+    color: $fontColor;
+    &__inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__logo {
+        color: #1A5690;
+        font-size: 25px;
+        font-weight: bold;
+        i {
+            font-size: 26px;
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    &__link {
+        color: #1A5690;
+        text-decoration: none;
+        transition: all .1s ease-in;
+        opacity: .6;
+        font-size: 16px;
+        margin-top: 5px;
+        display: block;
+        margin-left: 15px;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

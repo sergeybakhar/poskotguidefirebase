@@ -65,7 +65,7 @@ class Card extends Component {
         {/* <span className={styles.card__address}>Адрес:</span> */}
         <p className={styles.card__description}>Описание: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, non aperiam ipsa illo excepturi aliquam mollitia asperiores eos qui placeat aut adipisci blanditiis maxime sit voluptas provident enim laborum officiis aliquid vitae temporibus! Recusandae!</p>
 
-        <h2 className={styles.card__title}>Галерея</h2>
+        <h2 className={styles.card__title}>Посмотреть фотки</h2>
         <ImageGallery
           items={images}
           showThumbnails={false}
@@ -75,7 +75,7 @@ class Card extends Component {
           additionalClass={styles.card__slider}
         />
 
-        <h2 className={styles.card__title}>Где искать</h2>
+        <h2 className={styles.card__title}>Узнать, где это</h2>
         <div className={styles.card__map}>
           <div className={styles['card__map-inner']}>
             {/* <GoogleMapReact
@@ -88,7 +88,7 @@ class Card extends Component {
           </div>
         </div>
 
-        <h2 className={styles.card__title}>Поделиться</h2>
+        <h2 className={styles.card__title}>Рассказать другим, пусть тоже узнают</h2>
         <div className={styles['card__social-share']}>
           <FacebookShareButton
             url='http://github.com'
@@ -123,7 +123,7 @@ class Card extends Component {
           </WhatsappShareButton>
         </div>
 
-        <h2 className={styles.card__title}>Оставить комментарий</h2>
+        <h2 className={styles.card__title}>Обсудить и поделиться впечатлениями</h2>
         <div className={styles['card__fb-comments']}>
           <FacebookProvider appId="1045257252264946" language='ru_RU'  >
             <Comments href="http://localhost:3000/" width='50%' numPosts='3' orderBy='social' />
