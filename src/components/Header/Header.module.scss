@@ -1,15 +1,15 @@
 @import '../../scss/main';
 .header {
-    // background: #1A5690;
     padding: 20px 20px;
     font-family: $font;
-    color: $fontColor;
+    color: $fontColor; 
     &__inner {
         max-width: 1000px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
     &__logo {
         color: #1A5690;
@@ -19,10 +19,23 @@
             font-size: 26px;
         }
     }
+    &__logo-text {
+        @media (max-width: 620px) {
+            display: none;
+        }
+    }
+    & .nav__burger {
+        display: none;
+        position: absolute;
+        top: -9px;
+        right: 0;
+        @media (max-width: 650px) {
+            display: inline-block;
+        }
+    }
 }
 
 .nav {
-    display: flex;
     &__link {
         color: #1A5690;
         text-decoration: none;
@@ -35,5 +48,23 @@
         &:hover {
             opacity: 1;
         }
+        @media (max-width: 650px) {
+            margin-top: 10px;
+        }
+    }
+    &__inner {
+        display: flex;
+        @media (max-width: 650px) {
+            display: none;
+        }
+    }
+    &__inner-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 74px;
+        top: -4px;
+        text-align: right;
+        z-index: 10;
     }
 }
