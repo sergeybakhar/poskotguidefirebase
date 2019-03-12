@@ -39,7 +39,6 @@ class Card extends Component {
 
   render() {
 
-
     const images = [
       {
         original: 'http://img.ppcblog.com.ua/b113/9G3FC0.jpg',
@@ -56,8 +55,6 @@ class Card extends Component {
         thumbnail: 'http://lorempixel.com/250/150/nature/3/'
       }
     ]
-
-
 
     return (
       <div className={styles.card}>

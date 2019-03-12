@@ -32,7 +32,6 @@ class Header extends Component {
                         active={this.state.isMenuActive}
                         className={styles.nav__burger}
                         color='#1A5690'
-
                     />
                     <nav className={styles.nav}>
                         {
@@ -52,7 +51,6 @@ class Header extends Component {
             </header>
         )
     }
-
 }
 
 const mapSizesToProps = ({ width }) => {
@@ -62,4 +60,3 @@ const mapSizesToProps = ({ width }) => {
 }
 
 export default withSizes(mapSizesToProps)(Header);
-
