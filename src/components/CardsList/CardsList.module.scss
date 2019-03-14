@@ -1,0 +1,44 @@
+@import '../../scss/main';
+.cardslist {
+    padding: 20px 20px 120px;
+    font-family: $font;
+    color: $fontColor;
+    @media (max-width: 700px) {
+        padding-bottom: 160px;
+    }
+    &__inner {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    &__description {
+        margin: 0 0 35px;
+    }
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+        @media (max-width: 700px) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (max-width: 500px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item {
+        position: relative;
+    }
+    &__img {
+        height: auto;
+        width: 100%;
+        border-radius: 3px;
+    }
+    &__text {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        color: #fff;
+        font-weight: bold;
+    }
+}

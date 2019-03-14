@@ -3,6 +3,10 @@ import { Arrow } from 'react-burgers';
 import styles from './Header.module.scss';
 import './Header.module.scss';
 import withSizes from 'react-sizes';
+import { HashRouter, Route, Link, NavLink } from 'react-router-dom';
+import About from '../About';
+import Contact from '../Contact';
+import CardsList from '../CardsList';
 
 class Header extends Component {
 
@@ -21,34 +25,42 @@ class Header extends Component {
     }
 
     render() {
-
         return (
-            <header className={styles.header}>
-                <div className={styles.header__inner}>
-                    <span className={styles.header__logo}>
-                        <i className="fas fa-map-marked-alt"></i> <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>
-                    </span>
-                    <Arrow onClick={this.burgerHandler}
-                        active={this.state.isMenuActive}
-                        className={styles.nav__burger}
-                        color='#1A5690'
-                    />
-                    <nav className={styles.nav}>
-                        {
-                            this.state.isMenuActive ? (
-                                <div className={styles['nav__inner-mobile']}>
-                                    <a href="#" className={styles.nav__link}>О проекте</a>
-                                    <a href="#" className={styles.nav__link}>Контакты</a>
-                                </div>
-                            ) : (null)
-                        }
-                        <div className={styles.nav__inner}>
-                            <a href="#" className={styles.nav__link}>О проекте</a>
-                            <a href="#" className={styles.nav__link}>Контакты</a>
-                        </div>
-                    </nav>
-                </div>
-            </header>
+            <HashRouter>
+                <>
+                <header className={styles.header}>
+                    <div className={styles.header__inner}>
+                        <Link to="/" className={styles.header__logo}>
+                            <i className="fas fa-map-marked-alt"></i> <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>
+                        </Link>
+                        <Arrow onClick={this.burgerHandler}
+                            active={this.state.isMenuActive}
+                            className={styles.nav__burger}
+                            color='#1A5690'
+                        />
+                        <nav className={styles.nav}>
+                            {
+                                this.state.isMenuActive ? (
+                                    <div className={styles['nav__inner-mobile']}>
+                                        {/* <NavLink to="/about" className={styles.nav__link} activeClassName={styles['nav__link--active']}>О проекте</NavLink> */}
+                                        <NavLink to="/contact" className={styles.nav__link} activeClassName={styles['nav__link--active']}>Контакты</NavLink>
+                                    </div>
+                                ) : (null)
+                            }
+                            <div className={styles.nav__inner}>
+                                {/* <NavLink to="/about" className={styles.nav__link} activeClassName={styles['nav__link--active']}>О проекте</NavLink> */}
+                                <NavLink to="/contact" className={styles.nav__link} activeClassName={styles['nav__link--active']}>Контакты</NavLink>
+                            </div>
+                        </nav>
+                    </div>
+                    
+                </header>
+
+                <Route exact path="/" component={CardsList} />
+                    {/* <Route path="/about" component={About} /> */}
+                    <Route path="/contact" component={Contact} />
+                </>
+            </HashRouter>
         )
     }
 }

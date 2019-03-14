@@ -1,0 +1,13 @@
+@import '../../scss/main';
+.about {
+    max-width: 630px;
+    margin: 0 auto;
+    padding: 40px 0;
+    padding-bottom: 120px;
+    font-family: $font;
+    color: $fontColor;
+    @media (max-width: 660px) {
+        padding: 30px 10px;
+        padding-bottom: 130px;
+    }
+}
