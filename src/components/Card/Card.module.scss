@@ -5,6 +5,12 @@
     padding: 10px 0 120px;
     font-family: $font;
     color: $fontColor;
+    @media (max-width: 800px) {
+        padding-bottom: 160px;
+    }
+    @media (max-width: 420px) {
+        padding-bottom: 180px;
+    }
     &__header {
         font-size: 36px;
         margin: 0 0 30px;

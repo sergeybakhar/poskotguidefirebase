@@ -26,6 +26,11 @@ class Card extends Component {
     zoom: 15
   };
 
+  componentDidMount() {
+    const { match: { params: { cardId } } } = this.props;
+    console.log(this.props)
+  }
+
   renderMarkers(map, maps) {
     new maps.Marker({
       position: {
