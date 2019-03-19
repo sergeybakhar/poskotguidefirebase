@@ -28,7 +28,6 @@ class Card extends Component {
 
   componentDidMount() {
     const { match: { params: { cardId } } } = this.props;
-    console.log(this.props)
   }
 
   renderMarkers(map, maps) {

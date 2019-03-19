@@ -4,7 +4,7 @@ import CardsList from './components/CardsList';
 import Contact from './components/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { HashRouter, Route, Link, NavLink, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import styles from './App.module.scss';
 
 class App extends Component {
