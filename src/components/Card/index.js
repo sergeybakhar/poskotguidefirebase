@@ -16,7 +16,7 @@ import {
   WhatsappIcon,
   ViberIcon
 } from 'react-share';
-import { findCard } from '../store/actions/index';
+import { findCard } from '../store/actions/cardAction';
 
 
 class Card extends Component {
@@ -167,7 +167,13 @@ class Card extends Component {
   }
 }
 
-const mapDispatchToProps = { findCard };
+// const mapDispatchToProps = { findCard };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    findCard: (cardId) => dispatch(findCard(cardId))
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
