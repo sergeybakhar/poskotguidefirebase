@@ -33,10 +33,14 @@ class CardsList extends Component {
                         }
                     </div>
                     {
-                        cardsList.length > numberOfCards ? (
-                            <button className={styles.cardslist__btn} onClick={this.handleButton}>Показать еще</button>
+                        cardsList ? (
+                            cardsList.length > numberOfCards ? (
+                                <button className={styles.cardslist__btn} onClick={this.handleButton}>Показать еще</button>
+                            ) : (
+                                    <p className={styles.cardslist__notification}> На этом пока всё :) </p>
+                                )
                         ) : (
-                                <p className={styles.cardslist__notification}> На этом пока всё :) </p>
+                                null
                             )
                     }
                 </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Card.module.scss';
+import Loader from '../Loader';
 import ImageGallery from 'react-image-gallery';
 import '../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 import GoogleMapReact from 'google-map-react';
@@ -43,15 +44,16 @@ class Card extends Component {
   }
 
   componentDidMount() {
-    const { match: { params: { cardId } } } = this.props;
-    this.props.findCard(cardId);
+    const { match: { params: { cardId } }, findCard } = this.props;
+    findCard(cardId);
     window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevProps) {
     const { header, description, images, map } = this.props.card[0]
+    const { card } = this.props;
 
-    if (prevProps.card !== this.props.card) {
+    if (prevProps.card !== card) {
       this.setState(
         {
           header,
@@ -78,9 +80,10 @@ class Card extends Component {
   render() {
     const { header, description, images } = this.state;
     const { center, zoom } = this.state.map[0];
+    const { card } = this.props;
 
     return (
-      this.props.card ? (
+      card ? (
         <div className={styles.card}>
           <h1 className={styles.card__header}>{header}</h1>
           {/* <span className={styles.card__address}>Адрес:</span> */}
@@ -158,7 +161,7 @@ class Card extends Component {
           </div>
         </div>
       ) : (
-          null
+          <Loader />
         )
     );
   }
