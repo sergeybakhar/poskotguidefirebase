@@ -5,8 +5,19 @@ import CardLink from '../CardLink';
 import Loader from '../Loader';
 
 class CardsList extends Component {
+
+    state = {
+        numberOfCards: 1
+    }
+
+    handleButton = () => {
+        this.setState({ numberOfCards: this.state.numberOfCards + 1 })
+    }
+
     render() {
         const { cardsList } = this.props;
+        const { numberOfCards } = this.state;
+
         return (
             <div className={styles.cardslist}>
                 <div className={styles.cardslist__inner}>
@@ -14,14 +25,20 @@ class CardsList extends Component {
                     <div className={styles.cardslist__wrapper}>
                         {
                             cardsList ? (
-                                cardsList.map(item =>
-                                    <CardLink card={item} key={item.id} />
+                                cardsList.map((item, i) => i < numberOfCards ? <CardLink card={item} key={item.id} /> : null
                                 )
                             ) : (
-                                    <Loader/>
+                                    <Loader />
                                 )
                         }
                     </div>
+                    {
+                        cardsList.length > numberOfCards ? (
+                            <button className={styles.cardslist__btn} onClick={this.handleButton}>Показать еще</button>
+                        ) : (
+                                <p className={styles.cardslist__notification}> На этом пока всё :) </p>
+                            )
+                    }
                 </div>
             </div>
         )

@@ -3,6 +3,7 @@ import styles from './Card.module.scss';
 import ImageGallery from 'react-image-gallery';
 import '../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 import GoogleMapReact from 'google-map-react';
+import { connect } from 'react-redux';
 import { FacebookProvider, Comments } from 'react-facebook';
 import {
   FacebookShareButton,
@@ -14,100 +15,125 @@ import {
   WhatsappIcon,
   ViberIcon
 } from 'react-share';
+import { findCard } from '../store/actions/index';
 
 
 class Card extends Component {
 
-  static defaultProps = {
-    center: {
-      lat: 46.573484,
-      lng: 30.799630
-    },
-    zoom: 15
-  };
+  state = {
+    header: '',
+    description: '',
+    images: [],
+    map: [
+      {
+        "center": {
+          "lat": 46.569139,
+          "lng": 30.804672
+        },
+        "zoom": 15
+      },
+      {
+        "position": {
+          "lat": 46.569139,
+          "lng": 30.804672
+        },
+        "title": "Hello World!"
+      }
+    ]
+  }
 
   componentDidMount() {
     const { match: { params: { cardId } } } = this.props;
+    this.props.findCard(cardId);
+    window.scrollTo(0, 0);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { header, description, images, map } = this.props.card[0]
+
+    if (prevProps.card !== this.props.card) {
+      this.setState(
+        {
+          header,
+          description,
+          images,
+          map
+        }
+      )
+    }
   }
 
   renderMarkers(map, maps) {
+    const { position, title } = this.state.map[1];
     new maps.Marker({
       position: {
-        lat: 46.573484,
-        lng: 30.799630
+        lat: position.lat,
+        lng: position.lng
       },
       map,
-      title: 'Hello World!'
+      title
     });
   }
 
   render() {
-
-    const images = [
-      {
-        original: 'http://img.ppcblog.com.ua/b113/9G3FC0.jpg',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-        originalAlt: 'test',
-        originalTitle: 'test',
-      },
-      {
-        original: 'http://img.ppcblog.com.ua/b113/9G3FC0.jpg',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://img.ppcblog.com.ua/b113/9G3FC0.jpg',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
+    const { header, description, images } = this.state;
+    const { center, zoom } = this.state.map[0];
 
     return (
-      <div className={styles.card}>
-        <h1 className={styles.card__header}>Заголовок poskot travel</h1>
-        {/* <span className={styles.card__address}>Адрес:</span> */}
-        <p className={styles.card__description}>Описание: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, non aperiam ipsa illo excepturi aliquam mollitia asperiores eos qui placeat aut adipisci blanditiis maxime sit voluptas provident enim laborum officiis aliquid vitae temporibus! Recusandae!</p>
+      this.props.card ? (
+        <div className={styles.card}>
+          <h1 className={styles.card__header}>{header}</h1>
+          {/* <span className={styles.card__address}>Адрес:</span> */}
+          <p className={styles.card__description}>{description}</p>
 
-        <h2 className={styles.card__title}>Посмотреть фотки</h2>
-        <ImageGallery
-          items={images}
-          showThumbnails={false}
-          showFullscreenButton={false}
-          showPlayButton={false}
-          showBullets
-          additionalClass={styles.card__slider}
-        />
+          <h2 className={styles.card__title}>Посмотреть фотки</h2>
 
-        <h2 className={styles.card__title}>Узнать, где это</h2>
-        <div className={styles.card__map}>
-          <div className={styles['card__map-inner']}>
-            {/* <GoogleMapReact
-              bootstrapURLKeys={{ key: 'AIzaSyAPSumGDQfNDZT9TlkfWoROc5V1who_t9M' }}
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-              yesIWantToUseGoogleMapApiInternals
-              onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
-            /> */}
+          <ImageGallery
+            items={images}
+            showThumbnails={false}
+            showFullscreenButton={false}
+            showPlayButton={false}
+            showBullets
+            additionalClass={styles.card__slider}
+          />
+
+          <h2 className={styles.card__title}>Узнать, где это</h2>
+          <div className={styles.card__map}>
+            <div className={styles['card__map-inner']}>
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: 'AIzaSyAdF-HqWA4VZjOuvCC9Dk9taOG6OXtg9No' }}
+                defaultCenter={
+                  {
+                    lat: center.lat,
+                    lng: center.lng
+                  }
+                }
+                defaultZoom={zoom}
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
+              />
+            </div>
           </div>
-        </div>
 
-        <h2 className={styles.card__title}>Рассказать другим, пусть тоже узнают</h2>
-        <div className={styles['card__social-share']}>
-          <FacebookShareButton
-            url='http://github.com'
-            quote='test'
-            className={styles['card__social-share-item']}
-          >
-            <FacebookIcon size={40} />
-          </FacebookShareButton>
+          <h2 className={styles.card__title}>Рассказать другим, пусть тоже узнают</h2>
+          <div className={styles['card__social-share']}>
+            <FacebookShareButton
+              url='http://github.com'
+              quote='test'
+              className={styles['card__social-share-item']}
+            >
+              <FacebookIcon size={40} />
+            </FacebookShareButton>
 
-          <TelegramShareButton
-            url='http://github.com'
-            title='test'
-            className={styles['card__social-share-item']}
-          >
-            <TelegramIcon size={40} />
-          </TelegramShareButton>
+            <TelegramShareButton
+              url='http://github.com'
+              title='test'
+              className={styles['card__social-share-item']}
+            >
+              <TelegramIcon size={40} />
+            </TelegramShareButton>
 
-          {/* <ViberShareButton
+            {/* <ViberShareButton
               url='https://moz.com/blog/domain-authority-seo'
              
               className={styles['card__social-share-item']}
@@ -115,24 +141,35 @@ class Card extends Component {
               <ViberIcon size={40} />
             </ViberShareButton> */}
 
-          <WhatsappShareButton
-            url='http://github.com'
-            title='test'
-            className={styles['card__social-share-item']}
-          >
-            <WhatsappIcon size={40} />
-          </WhatsappShareButton>
-        </div>
+            <WhatsappShareButton
+              url='http://github.com'
+              title='test'
+              className={styles['card__social-share-item']}
+            >
+              <WhatsappIcon size={40} />
+            </WhatsappShareButton>
+          </div>
 
-        <h2 className={styles.card__title}>Обсудить и поделиться впечатлениями</h2>
-        <div className={styles['card__fb-comments']}>
-          <FacebookProvider appId="1045257252264946" language='ru_RU'  >
-            <Comments href="http://localhost:3000/" width='50%' numPosts='3' orderBy='social' />
-          </FacebookProvider>
+          <h2 className={styles.card__title}>Обсудить и поделиться впечатлениями</h2>
+          <div className={styles['card__fb-comments']}>
+            <FacebookProvider appId="1045257252264946" language='ru_RU'  >
+              <Comments href="http://localhost:3000/" width='50%' numPosts='3' orderBy='social' />
+            </FacebookProvider>
+          </div>
         </div>
-      </div>
+      ) : (
+          null
+        )
     );
   }
 }
 
-export default Card;
+const mapDispatchToProps = { findCard };
+
+const mapStateToProps = (state) => {
+  return {
+    card: state.card.cardItem
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
