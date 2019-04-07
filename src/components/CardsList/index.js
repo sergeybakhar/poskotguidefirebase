@@ -3,6 +3,8 @@ import styles from './CardsList.module.scss';
 import { connect } from 'react-redux';
 import CardLink from '../CardLink';
 import Loader from '../Loader';
+import { compose } from 'redux';
+import { firebaseConnect } from 'react-redux-firebase'
 
 class CardsList extends Component {
 
@@ -17,7 +19,6 @@ class CardsList extends Component {
     render() {
         const { cardsList } = this.props;
         const { numberOfCards } = this.state;
-
         return (
             <div className={styles.cardslist}>
                 <div className={styles.cardslist__inner}>
@@ -51,8 +52,15 @@ class CardsList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        cardsList: state.cardsList.cards
+        cardsList: state.firebase.data.cards
     }
 }
 
-export default connect(mapStateToProps)(CardsList);
+export default compose(
+    firebaseConnect([
+        'cards'
+    ]),
+    connect(
+        mapStateToProps
+    )
+)(CardsList)

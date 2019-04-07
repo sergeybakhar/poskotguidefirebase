@@ -16,8 +16,8 @@ import {
   WhatsappIcon,
   ViberIcon
 } from 'react-share';
-import { findCard } from '../store/actions/cardAction';
-
+import { compose } from 'redux';
+import { firebaseConnect, getVal } from 'react-redux-firebase'
 
 class Card extends Component {
 
@@ -44,13 +44,11 @@ class Card extends Component {
   }
 
   componentDidMount() {
-    const { match: { params: { cardId } }, findCard } = this.props;
-    findCard(cardId);
     window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevProps) {
-    const { header, description, images, map } = this.props.card[0]
+    const { header, description, images, map } = this.props.card
     const { card } = this.props;
 
     if (prevProps.card !== card) {
@@ -81,7 +79,6 @@ class Card extends Component {
     const { header, description, images } = this.state;
     const { center, zoom } = this.state.map[0];
     const { card } = this.props;
-
     return (
       card ? (
         <div className={styles.card}>
@@ -167,18 +164,17 @@ class Card extends Component {
   }
 }
 
-// const mapDispatchToProps = { findCard };
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    findCard: (cardId) => dispatch(findCard(cardId))
-  }
+const mapStateToProps = ({ firebase }, props) => {
+  return ({
+    card: getVal(firebase, `data/${props.match.params.cardId}`)
+  })
 }
 
-const mapStateToProps = (state) => {
-  return {
-    card: state.card.cardItem
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default compose(
+  firebaseConnect((props) => {
+    return [
+      { path: `/${props.match.params.cardId}` },
+    ]
+  }),
+  connect(mapStateToProps)
+)(Card)
