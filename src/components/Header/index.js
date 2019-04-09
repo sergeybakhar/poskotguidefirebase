@@ -25,9 +25,9 @@ class Header extends Component {
         return (
             <header className={styles.header}>
                 <div className={styles.header__inner}>
-                    <Link to="/" className={styles.header__logo}>
+                    <NavLink to="/" className={styles.header__logo} exact activeClassName={styles['nav__link--active-header']}>
                         <i className="fas fa-map-marked-alt"></i> <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>
-                    </Link>
+                    </NavLink>
                     <Arrow onClick={this.burgerHandler}
                         active={this.state.isMenuActive}
                         className={styles.nav__burger}

@@ -48,6 +48,11 @@
         margin-left: 15px;
         &--active {
             opacity: 1;
+            pointer-events: none;
+        }
+        &--active-header {
+            opacity: 1;
+            pointer-events: none;
         }
         &:hover {
             opacity: 1;

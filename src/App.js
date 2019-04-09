@@ -17,7 +17,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={CardsList} />
               <Route exact path="/contact" component={Contact} />
-              <Route exact path="/:cardId" component={Card} />
+              <Route exact path="/:id/:cardURL/" component={Card} />
               <Route component={NoMatch} />
             </Switch>
             <Footer />

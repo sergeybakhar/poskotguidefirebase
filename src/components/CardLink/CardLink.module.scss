@@ -24,13 +24,14 @@
         z-index: 11;
         width: 100%;
         text-align: center;
-        background: rgba(26, 86, 144, 0.6);
+        background: rgba(26, 86, 144, 0.7);
         padding: 10px 0;
         transition: all .1s ease-in;
         max-height: 122px;
         overflow: hidden;
+        text-shadow: 1px 1px 0#1A5690;
         .cardlink:hover & {
-            background: rgba(26, 86, 144, 0.8);
+            background: rgba(26, 86, 144, 0.9);
         }
     }
     &__link {

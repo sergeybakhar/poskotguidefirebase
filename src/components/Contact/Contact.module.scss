@@ -2,11 +2,11 @@
 .contact {
     max-width: 630px;
     margin: 0 auto;
-    padding: 10px 0 120px;
+    padding: 25px 0 145px;
     font-family: $font;
     color: $fontColor;
     @media (max-width: 660px) {
-        padding-bottom: 170px;
+        padding-bottom: 200px;
     }
     &__description {
         font-size: 16px;

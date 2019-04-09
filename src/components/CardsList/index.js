@@ -19,13 +19,14 @@ class CardsList extends Component {
     render() {
         const { cardsList } = this.props;
         const { numberOfCards } = this.state;
+        
         return (
             <div className={styles.cardslist}>
                 <div className={styles.cardslist__inner}>
                     <p className={styles.cardslist__description}>Главная задача проекта - собрать наиболее полный список интересных, необычных, странных, красивых мест и  достопримечательностей, которые есть на поселке Котовского.</p>
                     <div className={styles.cardslist__wrapper}>
                         {
-                            cardsList ? (
+                            Array.isArray(cardsList) ? (
                                 cardsList.map((item, i) => i < numberOfCards ? <CardLink card={item} key={item.id} /> : null
                                 )
                             ) : (
@@ -34,7 +35,7 @@ class CardsList extends Component {
                         }
                     </div>
                     {
-                        cardsList ? (
+                        Array.isArray(cardsList) ? (
                             cardsList.length > numberOfCards ? (
                                 <button className={styles.cardslist__btn} onClick={this.handleButton}>Показать еще</button>
                             ) : (
