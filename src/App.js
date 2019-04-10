@@ -4,6 +4,7 @@ import CardsList from './components/CardsList';
 import Contact from './components/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import NotFound from './components/NotFound';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import styles from './App.module.scss';
 
@@ -18,7 +19,7 @@ class App extends Component {
               <Route exact path="/" component={CardsList} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/:id/:cardURL/" component={Card} />
-              <Route component={NoMatch} />
+              <Route component={NotFound} />
             </Switch>
             <Footer />
           </>
@@ -26,10 +27,6 @@ class App extends Component {
       </div>
     );
   }
-}
-
-function NoMatch() {
-  return <h1>Not Found</h1>
 }
 
 export default App;

@@ -4,15 +4,15 @@ import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './store/reducers/rootReducer';
-import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import './firebase/fbconfig.js';
 import rrfConfig from './firebase/rrfconfig';
 import firebase from 'firebase/app';
-import 'firebase/auth';
 
-const store = createStore(rootReducer, {})
+const initialState = {};
+const store = createStore(rootReducer, initialState)
 
 const rrfProps = {
     firebase,

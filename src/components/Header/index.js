@@ -3,7 +3,7 @@ import { Arrow } from 'react-burgers';
 import styles from './Header.module.scss';
 import './Header.module.scss';
 import withSizes from 'react-sizes';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
 

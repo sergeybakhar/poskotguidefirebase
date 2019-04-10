@@ -19,7 +19,7 @@ class CardsList extends Component {
     render() {
         const { cardsList } = this.props;
         const { numberOfCards } = this.state;
-        
+
         return (
             <div className={styles.cardslist}>
                 <div className={styles.cardslist__inner}>
