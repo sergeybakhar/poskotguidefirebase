@@ -12,7 +12,7 @@ import rrfConfig from './firebase/rrfconfig';
 import firebase from 'firebase/app';
 
 const initialState = {};
-const store = createStore(rootReducer, initialState)
+const store = createStore(rootReducer, initialState);
 
 const rrfProps = {
     firebase,

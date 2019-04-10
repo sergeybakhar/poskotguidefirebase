@@ -8,25 +8,21 @@ import NotFound from './components/NotFound';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import styles from './App.module.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <div className={styles.container}>
-        <HashRouter>
-          <>
-            <Header />
-            <Switch>
-              <Route exact path="/" component={CardsList} />
-              <Route exact path="/contact" component={Contact} />
-              <Route exact path="/:id/:cardURL/" component={Card} />
-              <Route component={NotFound} />
-            </Switch>
-            <Footer />
-          </>
-        </HashRouter>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className={styles.container}>
+    <HashRouter>
+      <>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={CardsList} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/:id/:cardURL/" component={Card} />
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
+      </>
+    </HashRouter>
+  </div>
+);
 
 export default App;
