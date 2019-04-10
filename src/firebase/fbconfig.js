@@ -15,4 +15,3 @@ if (!firebase.apps.length) {
 }
 
 export default fbConfig;
-

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Arrow } from 'react-burgers';
-import styles from './Header.module.scss';
-import './Header.module.scss';
 import withSizes from 'react-sizes';
 import { NavLink } from 'react-router-dom';
+import styles from './Header.module.scss';
+import './Header.module.scss';
 
 class Header extends Component {
 
@@ -12,12 +12,13 @@ class Header extends Component {
     }
 
     burgerHandler = () => {
-        this.setState({ isMenuActive: !this.state.isMenuActive })
+        this.setState({ isMenuActive: !this.state.isMenuActive });
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate() {
+        console.log(this.props.isMobile)
         if (this.state.isMenuActive && this.props.isMobile) {
-            this.setState({ isMenuActive: false })
+            this.setState({ isMenuActive: false });
         }
     }
 

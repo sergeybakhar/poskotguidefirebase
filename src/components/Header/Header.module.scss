@@ -1,8 +1,10 @@
 @import '../../scss/main';
+
 .header {
     padding: 20px 20px;
     font-family: $font;
     color: $fontColor;
+
     &__inner {
         max-width: 1000px;
         margin: 0 auto;
@@ -11,25 +13,30 @@
         align-items: center;
         position: relative;
     }
+
     &__logo {
-        color: #1A5690;
+        color: $mainBlueColor;
         font-size: 25px;
         font-weight: bold;
         text-decoration: none;
+
         i {
             font-size: 26px;
         }
     }
+
     &__logo-text {
         @media (max-width: 620px) {
             display: none;
         }
     }
+
     & .nav__burger {
         display: none;
         position: absolute;
         top: -9px;
         right: 0;
+
         @media (max-width: 650px) {
             display: inline-block;
         }
@@ -46,14 +53,17 @@
         margin-top: 5px;
         display: block;
         margin-left: 15px;
+
         &--active {
             opacity: 1;
             pointer-events: none;
         }
+
         &--active-header {
             opacity: 1;
             pointer-events: none;
         }
+
         &:hover {
             opacity: 1;
         }
@@ -62,12 +72,15 @@
             margin-top: 10px;
         }
     }
+
     &__inner {
         display: flex;
+
         @media (max-width: 650px) {
             display: none;
         }
     }
+
     &__inner-mobile {
         display: flex;
         flex-direction: column;
@@ -78,4 +91,3 @@
         z-index: 10;
     }
 }
-

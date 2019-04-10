@@ -1,14 +1,10 @@
 @import '../../scss/main';
 
 .not-found {
-    position: absolute;
     max-width: 1000px;
-    top: 30%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -30%);
-    transform: translate(-50%, -30%);
     font-family: $font;
     color: $fontColor;
+    @include centerAbsolute(30%, 50%);
 
     @media (max-width: 700px) {
         width: 100%;
@@ -19,5 +15,9 @@
         color: $mainBlueColor;
         text-align: center;
         font-size: 50px;
+    }
+
+    &__paragraph {
+        text-align: center;
     }
 }
