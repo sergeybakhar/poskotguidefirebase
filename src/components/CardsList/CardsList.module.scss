@@ -13,8 +13,7 @@
         padding-bottom: 185px;
     }
     &__inner {
-        max-width: 1000px;
-        margin: 0 auto;
+        @include inner();
     }
     &__description {
         margin: 0 0 35px;
@@ -35,7 +34,7 @@
     &__btn {
         display: block;
         margin: 0 auto;
-        background-color: #1A5690;
+        background-color: $mainBlueColor;
         border: 0;
         font-family: $font;
         color: #fff;

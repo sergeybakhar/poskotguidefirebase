@@ -13,13 +13,13 @@ class CardsList extends Component {
     }
 
     handleButton = () => {
-        this.setState({ numberOfCards: this.state.numberOfCards + 1 })
+        const { numberOfCards } = this.state;
+        this.setState({ numberOfCards: numberOfCards + 1 })
     }
 
     render() {
         const { cardsList } = this.props;
         const { numberOfCards } = this.state;
-
         return (
             <div className={styles.cardslist}>
                 <div className={styles.cardslist__inner}>
@@ -39,7 +39,7 @@ class CardsList extends Component {
                             cardsList.length > numberOfCards ? (
                                 <button className={styles.cardslist__btn} onClick={this.handleButton}>Показать еще</button>
                             ) : (
-                                    <p className={styles.cardslist__notification}> На этом пока всё :) </p>
+                                    <p className={styles.cardslist__notification}> На этом пока всё </p>
                                 )
                         ) : (
                                 null

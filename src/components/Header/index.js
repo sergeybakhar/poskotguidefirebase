@@ -12,17 +12,22 @@ class Header extends Component {
     }
 
     burgerHandler = () => {
-        this.setState({ isMenuActive: !this.state.isMenuActive });
+        const { isMenuActive } = this.state;
+
+        this.setState({ isMenuActive: !isMenuActive });
     }
 
     componentDidUpdate() {
-        console.log(this.props.isMobile)
-        if (this.state.isMenuActive && this.props.isMobile) {
+        const { isMenuActive } = this.state;
+        const { isMobile } = this.props;
+
+        if (isMenuActive && isMobile) {
             this.setState({ isMenuActive: false });
         }
     }
 
     render() {
+        const { isMenuActive } = this.state;
         return (
             <header className={styles.header}>
                 <div className={styles.header__inner}>
@@ -30,13 +35,13 @@ class Header extends Component {
                         <i className="fas fa-map-marked-alt"></i> <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>
                     </NavLink>
                     <Arrow onClick={this.burgerHandler}
-                        active={this.state.isMenuActive}
+                        active={isMenuActive}
                         className={styles.nav__burger}
                         color='#1A5690'
                     />
                     <nav className={styles.nav}>
                         {
-                            this.state.isMenuActive ? (
+                            isMenuActive ? (
                                 <div className={styles['nav__inner-mobile']}>
                                     <NavLink to="/contact" className={styles.nav__link} activeClassName={styles['nav__link--active']}>Контакты</NavLink>
                                 </div>

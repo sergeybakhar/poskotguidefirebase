@@ -39,97 +39,6 @@ class Card extends Component {
     });
   }
 
-  //   render() {
-  //     const { header, description, images } = this.state;
-  //     const { center, zoom } = this.state.map[0];
-  //     const { card } = this.props;
-  //     console.log(card)
-  //     return (
-  //       card ? (
-  //         <div className={styles.card}>
-  //           <h1 className={styles.card__header}>{header}</h1>
-  //           {/* <span className={styles.card__address}>Адрес:</span> */}
-  //           <p className={styles.card__description}>{description}</p>
-
-  //           <h2 className={styles.card__title}>Посмотреть фотки</h2>
-
-  //           <ImageGallery
-  //             items={images}
-  //             showThumbnails={false}
-  //             showFullscreenButton={false}
-  //             showPlayButton={false}
-  //             showBullets
-  //             additionalClass={styles.card__slider}
-  //           />
-
-  //           <h2 className={styles.card__title}>Узнать, где это</h2>
-  //           <div className={styles.card__map}>
-  //             <div className={styles['card__map-inner']}>
-  //               <GoogleMapReact
-  //                 bootstrapURLKeys={{ key: 'AIzaSyAdF-HqWA4VZjOuvCC9Dk9taOG6OXtg9No' }}
-  //                 center={
-  //                   {
-  //                     lat: center.lat,
-  //                     lng: center.lng
-  //                   }
-  //                 }
-  //                 defaultZoom={zoom}
-  //                 yesIWantToUseGoogleMapApiInternals
-  //                 onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
-  //               />
-  //             </div>
-  //           </div>
-
-  //           <h2 className={styles.card__title}>Рассказать другим, пусть тоже узнают</h2>
-  //           <div className={styles['card__social-share']}>
-  //             <FacebookShareButton
-  //               url='http://github.com'
-  //               quote='test'
-  //               className={styles['card__social-share-item']}
-  //             >
-  //               <FacebookIcon size={40} />
-  //             </FacebookShareButton>
-
-  //             <TelegramShareButton
-  //               url='http://github.com'
-  //               title='test'
-  //               className={styles['card__social-share-item']}
-  //             >
-  //               <TelegramIcon size={40} />
-  //             </TelegramShareButton>
-
-  //             {/* <ViberShareButton
-  //               url='https://moz.com/blog/domain-authority-seo'
-
-  //               className={styles['card__social-share-item']}
-  //             >
-  //               <ViberIcon size={40} />
-  //             </ViberShareButton> */}
-
-  //             <WhatsappShareButton
-  //               url='http://github.com'
-  //               title='test'
-  //               className={styles['card__social-share-item']}
-  //             >
-  //               <WhatsappIcon size={40} />
-  //             </WhatsappShareButton>
-  //           </div>
-
-  //           <h2 className={styles.card__title}>Обсудить и поделиться впечатлениями</h2>
-  //           <div className={styles['card__fb-comments']}>
-  //             <FacebookProvider appId="1045257252264946" language='ru_RU'  >
-  //               <Comments href="http://localhost:3000/" width='50%' numPosts='3' orderBy='social' />
-  //             </FacebookProvider>
-  //           </div>
-  //         </div>
-  //       ) : (
-  //           <Loader />
-  //         )
-  //     );
-  //   }
-  // }
-
-
   render() {
     const { card } = this.props;
     return (
@@ -139,7 +48,7 @@ class Card extends Component {
           {/* <span className={styles.card__address}>Адрес:</span> */}
           <p className={styles.card__description}>{card.description}</p>
 
-          <h2 className={styles.card__title}>Посмотреть фотки</h2>
+          <h2 className={styles.card__title}>Посмотреть фото</h2>
 
           <ImageGallery
             items={card.images}
@@ -186,13 +95,13 @@ class Card extends Component {
               <TelegramIcon size={40} />
             </TelegramShareButton>
 
-            {/* <ViberShareButton
-            url='https://moz.com/blog/domain-authority-seo'
-           
-            className={styles['card__social-share-item']}
-          >
-            <ViberIcon size={40} />
-          </ViberShareButton> */}
+            <ViberShareButton
+              url='https://moz.com/blog/domain-authority-seo'
+              title={card.header}
+              className={`${styles['card__social-share-item']} ${styles['card__social-share-item--viber']}`}
+            >
+              <ViberIcon size={40} />
+            </ViberShareButton>
 
             <WhatsappShareButton
               url='http://github.com'

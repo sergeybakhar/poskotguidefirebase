@@ -6,8 +6,7 @@
     color: $fontColor;
 
     &__inner {
-        max-width: 1000px;
-        margin: 0 auto;
+        @include inner();
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -54,11 +53,7 @@
         display: block;
         margin-left: 15px;
 
-        &--active {
-            opacity: 1;
-            pointer-events: none;
-        }
-
+        &--active,
         &--active-header {
             opacity: 1;
             pointer-events: none;
