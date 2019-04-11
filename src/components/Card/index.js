@@ -18,7 +18,8 @@ import {
   ViberIcon
 } from 'react-share';
 import { compose } from 'redux';
-import { firebaseConnect, getVal } from 'react-redux-firebase'
+import { firebaseConnect, getVal } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
 
 class Card extends Component {
 
@@ -126,11 +127,15 @@ class Card extends Component {
   }
 }
 
+Card.propTypes = {
+  card: PropTypes.object
+};
+
 const mapStateToProps = ({ firebase }, props) => {
   return ({
-    card: getVal(firebase, `data/cards/${props.match.params.id}`)
+    card: getVal(firebase, `data/cards/${props.match.params.id}`),
   })
-}
+};
 
 export default compose(
   firebaseConnect((props) => {

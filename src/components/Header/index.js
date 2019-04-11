@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Arrow } from 'react-burgers';
 import withSizes from 'react-sizes';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styles from './Header.module.scss';
 import './Header.module.scss';
 
@@ -57,10 +58,14 @@ class Header extends Component {
     }
 }
 
+Header.propTypes = {
+    isMobile: PropTypes.bool
+};
+
 const mapSizesToProps = ({ width }) => {
     return ({
         isMobile: width > 650,
     })
-}
+};
 
 export default withSizes(mapSizesToProps)(Header);

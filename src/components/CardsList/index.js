@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import styles from './CardsList.module.scss';
-import { connect } from 'react-redux';
 import CardLink from '../CardLink';
 import Loader from '../Loader';
+import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { firebaseConnect } from 'react-redux-firebase'
+import { firebaseConnect } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
+import styles from './CardsList.module.scss';
+
 
 class CardsList extends Component {
 
@@ -51,11 +53,18 @@ class CardsList extends Component {
     }
 };
 
+CardsList.propTypes = {
+    cardsList: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.object
+    ])
+};
+
 const mapStateToProps = (state) => {
     return {
         cardsList: state.firebase.data.cards
     }
-}
+};
 
 export default compose(
     firebaseConnect([
