@@ -1,9 +1,13 @@
 import React from 'react';
-import styles from './NotFound.module.scss'
+import styles from './NotFound.module.scss';
+import { Helmet } from 'react-helmet';
 
 const NotFound = () => {
     return (
         <div className={styles['not-found']}>
+            <Helmet>
+                <title>Страница не найдена: 404 ошибка</title>
+            </Helmet>
             <h2 className={styles['not-found__header']}>404</h2>
             <p className={styles['not-found__paragraph']}>
                 Все было нормально, но что-то пошло не так...

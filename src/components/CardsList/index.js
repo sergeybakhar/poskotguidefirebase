@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
 import styles from './CardsList.module.scss';
 
 
@@ -25,6 +26,9 @@ class CardsList extends Component {
         const { numberOfCards } = this.state;
         return (
             <div className={styles.cardslist}>
+                <Helmet>
+                    <title>Путеводитель по Поскоту (поселок Котовского, Суворовский район, Одесса)</title>
+                </Helmet>
                 <div className={styles.cardslist__inner}>
                     <p className={styles.cardslist__description}>Можно ли интересно, увлекательно, с пользой и бесплатно провести время на поселке Котовского? Ещё как можно! Главная задача сайта — собрать наиболее полный список интересных, необычных, странных, красивых мест и достопримечательностей, которые есть на поскоте.</p>
 

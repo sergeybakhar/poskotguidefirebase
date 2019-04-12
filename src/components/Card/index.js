@@ -20,6 +20,7 @@ import {
 import { compose } from 'redux';
 import { firebaseConnect, getVal } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
 
 class Card extends Component {
 
@@ -45,10 +46,13 @@ class Card extends Component {
     return (
       card ? (
         <div className={styles.card}>
+          <Helmet>
+            <title>{card.header}</title>
+          </Helmet>
           <h1 className={styles.card__header}>{card.header}</h1>
           {/* <span className={styles.card__address}>Адрес:</span> */}
           <p className={styles.card__description}>{card.description}</p>
-
+          
           <h2 className={styles.card__title}>Посмотреть фото</h2>
 
           <ImageGallery

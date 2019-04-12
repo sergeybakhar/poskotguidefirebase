@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './Contact.module.scss';
 import { FacebookProvider, Comments } from 'react-facebook';
+import {Helmet} from "react-helmet";
 
 const Contact = () => (
     <div className={styles.contact}>
+    <Helmet>
+                <title>Контакты</title>
+    </Helmet>
         <p className={styles.contact__description}>Любые отзывы, пожелания и рекомендации только приветствуются!</p>
         <div className={styles['contact__fb-comments']}>
             <FacebookProvider appId="1045257252264946" language='ru_RU'  >
