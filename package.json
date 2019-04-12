@@ -5,6 +5,7 @@
   "dependencies": {
     "firebase": "^5.9.2",
     "google-map-react": "^1.1.2",
+    "html-react-parser": "^0.7.0",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
