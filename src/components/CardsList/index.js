@@ -4,6 +4,7 @@ import Loader from '../Loader';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './CardsList.module.scss';
 
@@ -25,7 +26,10 @@ class CardsList extends Component {
         return (
             <div className={styles.cardslist}>
                 <div className={styles.cardslist__inner}>
-                    <p className={styles.cardslist__description}>Главная задача проекта - собрать наиболее полный список интересных, необычных, странных, красивых мест и  достопримечательностей, которые есть на поселке Котовского.</p>
+                    <p className={styles.cardslist__description}>Можно ли интересно, увлекательно, с пользой и бесплатно провести время на поселке Котовского? Ещё как можно! Главная задача сайта — собрать наиболее полный список интересных, необычных, странных, красивых мест и достопримечательностей, которые есть на поскоте.</p>
+
+                    <p className={styles.cardslist__description}>Сайт в процессе наполнения и разработки, просим отнестись с пониманием. Все вопросы и пожелания просим оставлять <NavLink to="/contact" className={styles.cardslist__link}>на странице обратной связи</NavLink>.</p>
+
                     <div className={styles.cardslist__wrapper}>
                         {
                             Array.isArray(cardsList) ? (
@@ -36,12 +40,13 @@ class CardsList extends Component {
                                 )
                         }
                     </div>
+
                     {
                         Array.isArray(cardsList) ? (
                             cardsList.length > numberOfCards ? (
                                 <button className={styles.cardslist__btn} onClick={this.handleButton}>Показать еще</button>
                             ) : (
-                                    <p className={styles.cardslist__notification}> На этом пока всё </p>
+                                    <p className={styles.cardslist__notification}>На этом пока всё! Знаете интересное место, которого нет на сайте? Просим поделиться <NavLink to="/contact" className={styles.cardslist__link}>на странице обратной связи</NavLink>.</p>
                                 )
                         ) : (
                                 null

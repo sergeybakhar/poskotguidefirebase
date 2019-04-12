@@ -16,6 +16,9 @@
         @include inner();
     }
     &__description {
+        &:first-child {
+            margin-bottom: 15px;
+        }
         margin: 0 0 35px;
     }
     &__wrapper {
@@ -51,6 +54,15 @@
     }
     &__notification {
         text-align: center;
-        font-weight: bold;
     }
+     &__link {
+        color: #1A5690;
+        text-decoration: none;
+        transition: all .1s ease-in;
+        opacity: .6;
+       &:hover {
+            opacity: 1;
+        }
+    }
+
 }
