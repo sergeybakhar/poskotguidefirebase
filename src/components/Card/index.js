@@ -44,6 +44,7 @@ class Card extends Component {
 
   render() {
     const { card } = this.props;
+    console.log(this.props)
     return (
       card ? (
         <div className={styles.card}>
@@ -69,7 +70,7 @@ class Card extends Component {
           <div className={styles.card__map}>
             <div className={styles['card__map-inner']}>
               <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyAdF-HqWA4VZjOuvCC9Dk9taOG6OXtg9No' }}
+                bootstrapURLKeys={{ key: 'AIzaSyDg5tHJ15X8lBjP3aTryWcd6JEQ_yzav1s' }}
                 center={
                   {
                     lat: card.map[0].center.lat,
@@ -86,7 +87,7 @@ class Card extends Component {
           <h2 className={styles.card__title}>Рассказать другим, пусть тоже узнают</h2>
           <div className={styles['card__social-share']}>
             <FacebookShareButton
-              url='http://github.com'
+              url={`http://poskotguide.od.ua/${card.url}`}
               quote={card.header}
               className={styles['card__social-share-item']}
             >
@@ -94,7 +95,7 @@ class Card extends Component {
             </FacebookShareButton>
 
             <TelegramShareButton
-              url='http://github.com'
+              url={`http://poskotguide.od.ua/${card.id}/${card.url}`}
               title={card.header}
               className={styles['card__social-share-item']}
             >
@@ -102,7 +103,7 @@ class Card extends Component {
             </TelegramShareButton>
 
             <ViberShareButton
-              url='https://moz.com/blog/domain-authority-seo'
+              url={`http://poskotguide.od.ua/${card.url}`}
               title={card.header}
               className={`${styles['card__social-share-item']} ${styles['card__social-share-item--viber']}`}
             >
@@ -110,7 +111,7 @@ class Card extends Component {
             </ViberShareButton>
 
             <WhatsappShareButton
-              url='http://github.com'
+              url={`http://poskotguide.od.ua/${card.url}`}
               title={card.header}
               className={styles['card__social-share-item']}
             >
@@ -138,14 +139,14 @@ Card.propTypes = {
 
 const mapStateToProps = ({ firebase }, props) => {
   return ({
-    card: getVal(firebase, `data/cards/${props.match.params.id}`),
+    card: getVal(firebase, `data/cards/${props.match.params.id - 1}`),
   })
 };
 
 export default compose(
   firebaseConnect((props) => {
     return [
-      { path: `/cards/${props.match.params.id}` },
+      { path: `/cards/${props.match.params.id - 1}` },
     ]
   }),
   connect(mapStateToProps)

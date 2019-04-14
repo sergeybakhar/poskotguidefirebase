@@ -2,16 +2,16 @@
 
 .card {
     @include inner(630px);
-    padding: 10px 0 120px;
+    padding: 10px 0 150px;
     font-family: $font;
     color: $fontColor;
 
     @media (max-width: 800px) {
-        padding-bottom: 160px;
+        padding-bottom: 180px;
     }
 
     @media (max-width: 420px) {
-        padding-bottom: 180px;
+        padding-bottom: 200px;
     }
 
     &__header {
