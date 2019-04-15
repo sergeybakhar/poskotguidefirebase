@@ -25,12 +25,12 @@
         z-index: 11;
         width: 100%;
         text-align: center;
-        background: rgba(26, 86, 144, 0.7);
-        padding: 10px 0;
+        background: rgba(26, 86, 144, 0.8);
+        padding: 15px 25px;
         transition: all .1s ease-in;
         max-height: 122px;
         overflow: hidden;
-        text-shadow: 1px 1px 0 $mainBlueColor;
+        text-shadow: 1px 1px 0 #000;
 
         .cardlink:hover & {
             background: rgba(26, 86, 144, 0.9);

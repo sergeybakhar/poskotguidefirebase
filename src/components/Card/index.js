@@ -44,7 +44,6 @@ class Card extends Component {
 
   render() {
     const { card } = this.props;
-    console.log(this.props)
     return (
       card ? (
         <div className={styles.card}>
@@ -87,7 +86,7 @@ class Card extends Component {
           <h2 className={styles.card__title}>Рассказать другим, пусть тоже узнают</h2>
           <div className={styles['card__social-share']}>
             <FacebookShareButton
-              url={`http://poskotguide.od.ua/${card.url}`}
+              url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
               quote={card.header}
               className={styles['card__social-share-item']}
             >
@@ -95,7 +94,7 @@ class Card extends Component {
             </FacebookShareButton>
 
             <TelegramShareButton
-              url={`http://poskotguide.od.ua/${card.id}/${card.url}`}
+              url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
               title={card.header}
               className={styles['card__social-share-item']}
             >
@@ -103,7 +102,7 @@ class Card extends Component {
             </TelegramShareButton>
 
             <ViberShareButton
-              url={`http://poskotguide.od.ua/${card.url}`}
+              url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
               title={card.header}
               className={`${styles['card__social-share-item']} ${styles['card__social-share-item--viber']}`}
             >
@@ -111,7 +110,7 @@ class Card extends Component {
             </ViberShareButton>
 
             <WhatsappShareButton
-              url={`http://poskotguide.od.ua/${card.url}`}
+              url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
               title={card.header}
               className={styles['card__social-share-item']}
             >
@@ -122,7 +121,7 @@ class Card extends Component {
           <h2 className={styles.card__title}>Обсудить и поделиться впечатлениями</h2>
           <div className={styles['card__fb-comments']}>
             <FacebookProvider appId="1045257252264946" language='ru_RU'  >
-              <Comments href="http://localhost:3000/" width='50%' numPosts='3' orderBy='social' />
+              <Comments href={`http://poskotguide.od.ua/#/${card.id}/${card.url}`} width='50%' numPosts='3' orderBy='social' />
             </FacebookProvider>
           </div>
         </div>
