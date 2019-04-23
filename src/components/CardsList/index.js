@@ -13,7 +13,7 @@ import styles from './CardsList.module.scss';
 class CardsList extends Component {
 
     state = {
-        numberOfCards: 3
+        numberOfCards: 4
     }
 
     handleButton = () => {
