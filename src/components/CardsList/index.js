@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
 import styles from './CardsList.module.scss';
 
-
 class CardsList extends Component {
 
     state = {
@@ -30,7 +29,7 @@ class CardsList extends Component {
                     <title>Путеводитель по Поскоту (поселок Котовского, Суворовский район, Одесса)</title>
                 </Helmet>
                 <div className={styles.cardslist__inner}>
-                    <p className={styles.cardslist__description}>Можно ли интересно, увлекательно, с пользой и бесплатно провести время на поселке Котовского? Ещё как можно! Главная задача сайта — собрать наиболее полный список интересных, необычных, странных, красивых мест и достопримечательностей, которые есть на поскоте.</p>
+                    <p className={styles.cardslist__description}>Можно ли интересно, увлекательно, с пользой и бесплатно провести время на поселке Котовского или совсем рядом? Ещё как можно! Главная задача сайта — собрать наиболее полный список интересных, необычных, странных, красивых мест и достопримечательностей, которые есть на поскоте и вблизи.</p>
 
                     <p className={styles.cardslist__description}>Сайт в процессе наполнения и разработки, просим отнестись с пониманием. Все вопросы и пожелания просим оставлять <NavLink to="/contact" className={styles.cardslist__link}>на странице обратной связи</NavLink>.</p>
 
@@ -44,7 +43,6 @@ class CardsList extends Component {
                                 )
                         }
                     </div>
-
                     {
                         Array.isArray(cardsList) ? (
                             cardsList.length > numberOfCards ? (
