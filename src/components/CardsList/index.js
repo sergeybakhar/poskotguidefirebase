@@ -13,12 +13,12 @@ import styles from './CardsList.module.scss';
 class CardsList extends Component {
 
     state = {
-        numberOfCards: 1
+        numberOfCards: 3
     }
 
     handleButton = () => {
         const { numberOfCards } = this.state;
-        this.setState({ numberOfCards: numberOfCards + 1 })
+        this.setState({ numberOfCards: numberOfCards + 3 })
     }
 
     render() {

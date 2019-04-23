@@ -42,6 +42,8 @@
 
         @media (max-width: 500px) {
             grid-template-columns: 1fr;
+            position: relative;
+            min-height: 100px;
         }
     }
 
