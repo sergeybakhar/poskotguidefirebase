@@ -17,7 +17,7 @@ class CardsList extends Component {
 
     handleButton = () => {
         const { numberOfCards } = this.state;
-        this.setState({ numberOfCards: numberOfCards + 3 })
+        this.setState({ numberOfCards: numberOfCards + 4 })
     }
 
     render() {

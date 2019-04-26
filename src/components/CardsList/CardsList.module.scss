@@ -18,7 +18,7 @@
     }
 
     &__inner {
-        @include inner();
+        @include inner(1100px);
     }
 
     &__description {
