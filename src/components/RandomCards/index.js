@@ -50,7 +50,7 @@ class RandomCards extends Component {
                     </div>
                     {
                         Array.isArray(cardsList) ? (
-                            cardsList.length > numberOfCards ? (
+                            cardsList.length - 1 > numberOfCards ? (
                                 <button className={styles.randomCards__btn} onClick={this.handleButton}>Показать еще</button>
                             ) : (
                                     <p className={styles.randomCards__notification}>На этом пока всё! Знаете интересное место, которого нет на сайте? Просим поделиться <NavLink to="/contact" className={styles.randomCards__link}>на странице обратной связи</NavLink>.</p>
