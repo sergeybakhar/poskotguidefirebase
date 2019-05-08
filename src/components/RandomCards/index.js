@@ -12,7 +12,8 @@ import { NavLink } from 'react-router-dom';
 class RandomCards extends Component {
 
     state = {
-        numberOfCards: 4
+        numberOfCards: 4,
+        randomCardsArr: []
     }
 
     handleButton = () => {
@@ -21,21 +22,24 @@ class RandomCards extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.numberOfCards > 4) {
-            this.setState({ numberOfCards: 4 })
+        const { cardsList, card } = this.props;
+
+        if (prevProps.card.id !== this.props.card.id) {
+            this.setState({
+                numberOfCards: 4,
+                randomCardsArr: shuffle(without(cardsList, card))
+            })
+        }
+
+        if (Array.isArray(cardsList) && this.state.randomCardsArr.length === 0) {
+            this.setState({ randomCardsArr: shuffle(without(cardsList, card)) })
         }
     }
 
     render() {
 
-        const { cardsList, card } = this.props;
-        const { numberOfCards } = this.state;
-        let filteredArr;
-
-        if (Array.isArray(cardsList)) {
-            filteredArr = without(cardsList, card);
-            shuffle(filteredArr);
-        }
+        const { cardsList } = this.props;
+        const { numberOfCards, randomCardsArr } = this.state;
 
         return (
             <div className={styles.randomCards}>
@@ -44,7 +48,7 @@ class RandomCards extends Component {
                     <div className={styles.randomCards__wrapper}>
                         {
                             Array.isArray(cardsList) && (
-                                filteredArr.map((item, i) => i < numberOfCards ? <CardLink card={item} key={item.id} isRandom={true} id={item.id} /> : null)
+                                randomCardsArr.map((item, i) => i < numberOfCards ? <CardLink card={item} key={item.id} isRandom={true} id={item.id} /> : null)
                             )
                         }
                     </div>

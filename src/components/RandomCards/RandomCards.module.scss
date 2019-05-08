@@ -1,21 +1,21 @@
 @import '../../scss/main';
 
 .randomCards {
-    padding: 20px 25px 120px;
+    padding: 20px 25px 130px;
     font-family: $font;
     color: $fontColor;
     background-color: $mainBlueColor;
 
     @media (max-width: 800px) {
-        padding-bottom: 160px;
+        padding-bottom: 170px;
     }
 
     @media (max-width: 700px) {
-        padding-bottom: 165px;
+        padding-bottom: 175px;
     }
 
     @media (max-width: 425px) {
-        padding-bottom: 200px;
+        padding-bottom: 210px;
     }
 
     &__header {

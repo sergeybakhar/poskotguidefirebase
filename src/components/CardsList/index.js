@@ -12,7 +12,7 @@ import styles from './CardsList.module.scss';
 class CardsList extends Component {
 
     state = {
-        numberOfCards: 4
+        numberOfCards: 8
     }
 
     handleButton = () => {

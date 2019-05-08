@@ -33,6 +33,7 @@ class Card extends Component {
 
   componentDidUpdate(prevProps) {
     window.scrollTo(0, 0);
+    this._imageGallery.slideToIndex(0)
   }
 
   // renderMarkers = (map, maps) => {
@@ -70,6 +71,7 @@ class Card extends Component {
               showPlayButton={false}
               showBullets
               additionalClass={styles.card__slider}
+              ref={i => this._imageGallery = i}
             />
 
             <h2 className={styles.card__title}>Узнать, где это</h2>
