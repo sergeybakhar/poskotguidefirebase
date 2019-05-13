@@ -29,11 +29,14 @@ class Header extends Component {
 
     render() {
         const { isMenuActive } = this.state;
+        const hrefOfHome = window.location.href.length > 27;
+
         return (
             <header className={styles.header}>
                 <div className={styles.header__inner}>
                     <NavLink to="/" className={styles.header__logo} exact activeClassName={styles['nav__link--active-header']}>
-                        <i className="fas fa-map-marked-alt"></i> <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>
+                        <i className="fas fa-map-marked-alt"></i>
+                        {hrefOfHome && <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>}
                     </NavLink>
                     <Arrow onClick={this.burgerHandler}
                         active={isMenuActive}

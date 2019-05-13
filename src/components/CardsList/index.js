@@ -17,7 +17,7 @@ class CardsList extends Component {
 
     handleButton = () => {
         const { numberOfCards } = this.state;
-        this.setState({ numberOfCards: numberOfCards + 4 })
+        this.setState({ numberOfCards: numberOfCards + 8 })
     }
 
     render() {
@@ -29,12 +29,12 @@ class CardsList extends Component {
                     <title>Путеводитель по Поскоту (поселок Котовского, Суворовский район, Одесса)</title>
                 </Helmet>
                 <div className={styles.cardslist__inner}>
-                    <p className={styles.cardslist__description}>Можно ли интересно, увлекательно, с пользой и бесплатно провести время на поселке Котовского или совсем рядом? Ещё как можно! Главная задача сайта — собрать наиболее полный список интересных, необычных, странных, красивых мест и достопримечательностей, которые есть на поскоте и вблизи.</p>
+                    {/* <p className={styles.cardslist__description}>Можно ли интересно, увлекательно, с пользой и бесплатно провести время на поселке Котовского или совсем рядом? Ещё как можно! Главная задача сайта — собрать наиболее полный список интересных, необычных, странных, красивых мест и достопримечательностей, которые есть на поскоте и вблизи.</p> */}
 
                     {/* <p className={styles.cardslist__description}>Сайт в процессе наполнения и разработки, просим отнестись с пониманием. Все вопросы и пожелания просим оставлять <NavLink to="/contact" className={styles.cardslist__link}>на странице обратной связи</NavLink>.</p> */}
 
                     <p className={styles.cardslist__support}>
-                        <i className="fas fa-tools"></i>Сайт в процессе наполнения и разработки, просим отнестись с пониманием. В настоящее время проект не носит коммерческий характер. Будем рады любым рекомендациям! Все вопросы и пожелания просим оставлять <NavLink to="/contact" className={styles.cardslist__link}>на странице обратной связи</NavLink>.</p>
+                        <i className="fas fa-tools"></i>Сайт в процессе наполнения и разработки, отнеситесь с пониманием. В настоящее время проект не носит коммерческий характер. Будем рады любым рекомендациям! Все вопросы и пожелания просим оставлять <NavLink to="/contact" className={styles.cardslist__link}>на странице обратной связи</NavLink>.</p>
 
                     <div className={styles.cardslist__wrapper}>
                         {
@@ -71,8 +71,14 @@ CardsList.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+    let reversedCardsList;
+    if (state.firebase.data.cards) {
+        reversedCardsList = [...state.firebase.data.cards];
+        reversedCardsList.reverse();
+    }
+
     return {
-        cardsList: state.firebase.data.cards
+        cardsList: reversedCardsList
     }
 };
 
