@@ -5,6 +5,7 @@ import Contact from './components/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
+import Intro from './components/Intro';
 import styles from './App.module.scss';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ const App = () => (
     <HashRouter>
       <>
         <Header />
+        <Intro />
         <Switch>
           <Route exact path="/" component={CardsList} />
           <Route exact path="/contact" component={Contact} />
