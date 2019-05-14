@@ -91,10 +91,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-// const mapDispatchToProps = {
-//     homePageAction
-// }
-
 export default compose(
     firebaseConnect([
         'cards'
