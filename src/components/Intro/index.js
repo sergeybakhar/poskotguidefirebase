@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './Intro.module.scss'
+import styles from './Intro.module.scss';
+import { connect } from 'react-redux';
 
-const Intro = () => {
-    const hrefOfHome = window.location.href.length > 27;
-
+const Intro = ({ isHome }) => {
+    // const hrefOfHome = window.location.href.length > 27;
+    console.log(isHome)
     return (
-        !hrefOfHome &&
+        isHome &&
         <div className={styles.intro}>
             <div className={styles.intro__mask}>
                 <div className={styles.intro__inner}>
@@ -19,4 +20,10 @@ const Intro = () => {
     )
 }
 
-export default Intro;
+const mapStateToProps = (state) => {
+    return {
+        isHome: state.homePageReducer.isHomePage
+    }
+}
+
+export default connect(mapStateToProps)(Intro);

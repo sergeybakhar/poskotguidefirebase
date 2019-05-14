@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
 import styles from './CardsList.module.scss';
+import { isHomePage } from '../../store/actions/homePageAction';
 
 class CardsList extends Component {
 
@@ -18,6 +19,14 @@ class CardsList extends Component {
     handleButton = () => {
         const { numberOfCards } = this.state;
         this.setState({ numberOfCards: numberOfCards + 8 })
+    }
+
+    componentDidMount() {
+        this.props.isHomePage(true)
+    }
+
+    componentWillUnmount() {
+        this.props.isHomePage(false)
     }
 
     render() {
@@ -73,7 +82,7 @@ CardsList.propTypes = {
 const mapStateToProps = (state) => {
     let reversedCardsList;
     if (state.firebase.data.cards) {
-        reversedCardsList = [...state.firebase.data.cards];
+        reversedCardsList = [...state.firebase.data.cards]; //is it a good practice? it works fast!
         reversedCardsList.reverse();
     }
 
@@ -82,11 +91,16 @@ const mapStateToProps = (state) => {
     }
 };
 
+// const mapDispatchToProps = {
+//     homePageAction
+// }
+
 export default compose(
     firebaseConnect([
         'cards'
     ]),
     connect(
-        mapStateToProps
+        mapStateToProps,
+        { isHomePage }
     )
 )(CardsList)
