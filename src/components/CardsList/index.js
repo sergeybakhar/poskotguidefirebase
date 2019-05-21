@@ -44,6 +44,8 @@ class CardsList extends Component {
 
                     <p className={styles.cardslist__support}>
                         <i className="fas fa-tools"></i>Сайт в процессе наполнения и разработки, отнеситесь с пониманием. В настоящее время проект не носит коммерческий характер. Будем рады любым рекомендациям! Все вопросы и пожелания просим оставлять <NavLink to="/contact" className={styles.cardslist__link}>на странице обратной связи</NavLink>.</p>
+                    <i className="fas fa-map-signs"></i>
+                    <h3 className={styles.cardslist__header}>Свежие добавления</h3>
 
                     <div className={styles.cardslist__wrapper}>
                         {
@@ -90,10 +92,6 @@ const mapStateToProps = (state) => {
         cardsList: reversedCardsList
     }
 };
-
-// const mapDispatchToProps = {
-//     homePageAction
-// }
 
 export default compose(
     firebaseConnect([

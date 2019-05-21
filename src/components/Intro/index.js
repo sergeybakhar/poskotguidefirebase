@@ -2,11 +2,10 @@ import React from 'react';
 import styles from './Intro.module.scss';
 import { connect } from 'react-redux';
 
-const Intro = ({ isHome }) => {
+const Intro = ({ isHomePage }) => {
     // const hrefOfHome = window.location.href.length > 27;
-    console.log(isHome)
     return (
-        isHome &&
+        isHomePage &&
         <div className={styles.intro}>
             <div className={styles.intro__mask}>
                 <div className={styles.intro__inner}>
@@ -22,7 +21,7 @@ const Intro = ({ isHome }) => {
 
 const mapStateToProps = (state) => {
     return {
-        isHome: state.homePageReducer.isHomePage
+        isHomePage: state.homePageReducer.isHomePage
     }
 }
 

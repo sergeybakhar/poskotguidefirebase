@@ -8,6 +8,7 @@ import NotFound from './components/NotFound';
 import Intro from './components/Intro';
 import styles from './App.module.scss';
 import { HashRouter, Route, Switch } from 'react-router-dom';
+import TopCards from './components/TopCards';
 
 const App = () => (
   <div className={styles.container}>
@@ -22,6 +23,7 @@ const App = () => (
           <Route component={NotFound} />
         </Switch>
         <Footer />
+        <TopCards />
       </>
     </HashRouter>
   </div>
