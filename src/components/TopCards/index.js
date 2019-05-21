@@ -28,6 +28,7 @@ class TopCards extends Component {
             isHomePage &&
             <div className={styles.topCards}>
                 <div className={styles.topCards__inner}>
+                    <i className="fas fa-map-marker-alt"></i>
                     <h3 className={styles.topCards__header}>Топ популярных мест</h3>
                     <div className={styles.topCards__wrapper}>
                         {

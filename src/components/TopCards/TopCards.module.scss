@@ -1,7 +1,7 @@
 @import '../../scss/main';
 
 .topCards {
-    padding: 20px 25px 100px;
+    padding: 30px 25px 100px;
     font-family: $font;
     color: $fontColor;
 
@@ -21,10 +21,32 @@
         color: $fontColor;
         font-size: 25px;
         text-align: center;
+        margin-top: 5px;
+    }
+
+    i {
+        text-align: center;
+        color: #EA4335;
+        font-size: 50px;
+        position: relative;
+        z-index: 10;
+
+        &:after {
+            content: '';
+            height: 21px;
+            width: 21px;
+            border-radius: 50%;
+            background-color: #970909;
+            position: absolute;
+            top: 8px;
+            left: 9px;
+            z-index: -1;
+        }
     }
 
     &__inner {
         @include inner(1100px);
+        text-align: center;
     }
 
     &__wrapper {
@@ -65,7 +87,6 @@
 
     &__text {
         display: block;
-        // color: #fff;
         color: $mainBlueColor;
         font-weight: bold;
         font-size: 17px;
@@ -76,6 +97,7 @@
         // height: 54px;
         overflow: hidden;
         margin-bottom: 10px;
+        text-align: left;
     }
 
     &__description {
