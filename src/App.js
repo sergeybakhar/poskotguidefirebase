@@ -20,6 +20,7 @@ const App = () => (
           <Route exact path="/" component={CardsList} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/:id/:cardURL/" component={Card} />
+          <Route exact path="/404.html" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
