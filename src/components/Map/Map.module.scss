@@ -1,0 +1,120 @@
+@import '../../scss/main';
+
+.map {
+    @include inner(630px);
+    padding: 10px 0 50px;
+    font-family: $font;
+    color: $fontColor;
+
+    // @media (max-width: 800px) {
+    //     padding-bottom: 180px;
+    // }
+
+    // @media (max-width: 420px) {
+    //     padding-bottom: 200px;
+    // }
+
+    &__header {
+        font-size: 36px;
+        margin: 0 0 30px;
+
+        @media (max-width: 660px) {
+            padding: 0 10px;
+            font-size: 28px;
+        }
+    }
+
+    &__title {
+        margin: 0 0 10px;
+        font-size: 25px;
+
+        @media (max-width: 660px) {
+            padding: 0 10px;
+            font-size: 22px;
+        }
+    }
+
+    &__description {
+        font-size: 16px;
+        margin: 0 0 30px;
+
+        @media (max-width: 660px) {
+            padding: 0 10px;
+        }
+
+        a {
+            text-decoration: underline;
+            color: #1A5690;
+            text-decoration: none;
+            -webkit-transition: all .1s ease-in;
+            transition: all .1s ease-in;
+            opacity: .6;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+    }
+
+    &__slider {
+        margin-bottom: 40px;
+        border: 1px solid $borderColor;
+    }
+
+    &__map {
+        position: relative;
+        padding-bottom: 75%;
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 40px;
+        border: 1px solid $borderColor;
+    }
+
+    &__map-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__fb-comments {
+        border: 1px solid $borderColor;
+        padding: 10px 15px;
+
+        @media (max-width: 450px) {
+            padding: 0;
+        }
+    }
+
+    &__social-share {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 220px;
+        margin-bottom: 40px;
+
+        @media (max-width: 450px) {
+            max-width: 100%;
+            justify-content: space-around;
+        }
+
+        @media (max-width: 660px) {
+            padding: 0 10px;
+        }
+    }
+
+    &__social-share-item {
+        cursor: pointer;
+
+        &--viber {
+            display: none;
+
+            @media (max-width: 450px) {
+                display: block;
+            }
+        }
+    }
+
+}
