@@ -51,12 +51,18 @@ class Card extends Component {
 
   render() {
     const { card } = this.props;
+    console.log(card ? card.images : 'hello')
     return (
       card ? (
         <>
           <div className={styles.card}>
             <Helmet>
               <title>{card.header}</title>
+              <meta property="og:title" content={card.header} />  {/* yeah, it doesn't work. need ssr. */}
+              <meta property="og:type" content="article" />
+              <meta property="og:url" content={`http://poskotguide.od.ua/#/${card.id}/${card.url}`} />
+              <meta property="og:description" content={parse(card.description)} />
+              <meta property="og:image" content={card.images[0].original} />
             </Helmet>
             <h1 className={styles.card__header}>{card.header}</h1>
             {/* <span className={styles.card__address}>Адрес:</span> */}
