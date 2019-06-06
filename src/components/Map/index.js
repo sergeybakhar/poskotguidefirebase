@@ -1,39 +1,27 @@
 import React, { Component } from 'react';
-import styles from './Card.module.scss';
-import './card.css';
+import styles from './Map.module.scss';
 import Loader from '../Loader';
-import ImageGallery from 'react-image-gallery';
-import '../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux';
-import { FacebookProvider, Comments } from 'react-facebook';
-import {
-  FacebookShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  ViberShareButton,
-  FacebookIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  ViberIcon
-} from 'react-share';
 import { compose } from 'redux';
-import { firebaseConnect, getVal } from 'react-redux-firebase';
+import { firebaseConnect } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
-import parse from 'html-react-parser';
-import RandomCards from '../RandomCards';
-import GoogleMarker from '../GoogleMarker';
+import GoogleMarkerInteractive from '../GoogleMarkerInteractive';
 
 class Map extends Component {
 
+  state = {
+    show: false
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
+
   }
 
   componentDidUpdate(prevProps) {
     window.scrollTo(0, 0);
-    this._imageGallery.slideToIndex(0)
   }
 
   // renderMarkers = (map, maps) => {
@@ -49,100 +37,65 @@ class Map extends Component {
   //   });
   // }
 
+  _onChildMouseEnter = (key) => {
+    // console.log(key)
+    this.setState({ show: !this.state.show })
+  }
+
+  _onChildMouseLeave = (key) => {
+    // console.log(key)
+    this.setState({ show: !this.state.show })
+  }
+
+  _onChildClick = (key) => {
+    console.log(key)
+    this.setState({ show: !this.state.show })
+  }
+
+
   render() {
-    const { card } = this.props;
-    console.log(card ? card.images : 'hello')
+    const { cardsList } = this.props;
     return (
-      card ? (
+      cardsList ? (
         <>
-          <div className={styles.card}>
+          <div className={styles.map}>
             <Helmet>
-              <title>{card.header}</title>
-              <meta property="og:title" content={card.header} />  {/* yeah, it doesn't work. need ssr. */}
-              <meta property="og:type" content="article" />
-              <meta property="og:url" content={`http://poskotguide.od.ua/#/${card.id}/${card.url}`} />
-              <meta property="og:description" content={parse(card.description)} />
-              <meta property="og:image" content={card.images[0].original} />
+              <title>Карта мест на поселке Котовского</title>
             </Helmet>
-            <h1 className={styles.card__header}>{card.header}</h1>
-            {/* <span className={styles.card__address}>Адрес:</span> */}
-            <p className={styles.card__description}>{parse(card.description)}</p>
 
-            <h2 className={styles.card__title}>Посмотреть фото</h2>
-
-            <ImageGallery
-              items={card.images}
-              showThumbnails={false}
-              showFullscreenButton={false}
-              showPlayButton={false}
-              showBullets
-              additionalClass={styles.card__slider}
-              ref={i => this._imageGallery = i}
-            />
-
-            <h2 className={styles.card__title}>Узнать, где это</h2>
-            <div className={styles.card__map}>
-              <div className={styles['card__map-inner']}>
-                <GoogleMapReact
-                  bootstrapURLKeys={{ key: 'AIzaSyDg5tHJ15X8lBjP3aTryWcd6JEQ_yzav1s' }}
-                  center={
-                    {
-                      lat: card.map[0].center.lat,
-                      lng: card.map[0].center.lng
-                    }
-                  }
-                  defaultZoom={card.map[0].zoom}
-                // yesIWantToUseGoogleMapApiInternals
-                // onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
-                >
-                  <GoogleMarker lat={card.map[0].center.lat} lng={card.map[0].center.lng} text={card.map[1].title} />
-                </GoogleMapReact>
-              </div>
-            </div>
-
-            <h2 className={styles.card__title}>Рассказать другим, пусть тоже узнают</h2>
-            <div className={styles['card__social-share']}>
-              <FacebookShareButton
-                url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
-                quote={card.header}
-                className={styles['card__social-share-item']}
-              >
-                <FacebookIcon size={40} />
-              </FacebookShareButton>
-
-              <TelegramShareButton
-                url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
-                title={card.header}
-                className={styles['card__social-share-item']}
-              >
-                <TelegramIcon size={40} />
-              </TelegramShareButton>
-
-              <ViberShareButton
-                url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
-                title={card.header}
-                className={`${styles['card__social-share-item']} ${styles['card__social-share-item--viber']}`}
-              >
-                <ViberIcon size={40} />
-              </ViberShareButton>
-
-              <WhatsappShareButton
-                url={`http://poskotguide.od.ua/#/${card.id}/${card.url}`}
-                title={card.header}
-                className={styles['card__social-share-item']}
-              >
-                <WhatsappIcon size={40} />
-              </WhatsappShareButton>
-            </div>
-
-            <h2 className={styles.card__title}>Обсудить и поделиться впечатлениями</h2>
-            <div className={styles['card__fb-comments']}>
-              <FacebookProvider appId="1045257252264946" language='ru_RU'  >
-                <Comments href={`http://poskotguide.od.ua/#/${card.id}/${card.url}`} width='50%' numPosts='3' orderBy='social' />
-              </FacebookProvider>
-            </div>
+            {/* <div className={styles.map__map}>
+              <div className={styles['map__map-inner']}> */}
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: 'AIzaSyAdF-HqWA4VZjOuvCC9Dk9taOG6OXtg9No' }}
+              center={
+                {
+                  lat: 46.574531,
+                  lng: 30.780865
+                }
+              }
+              defaultZoom={13}
+              onChildMouseEnter={this._onChildMouseEnter}
+              onChildMouseLeave={this._onChildMouseLeave}
+              onChildClick={this._onChildClick}
+            // yesIWantToUseGoogleMapApiInternals
+            // onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
+            >
+              {cardsList ? (
+                cardsList.map(card => (
+                  <GoogleMarkerInteractive
+                    lat={card.map[0].center.lat}
+                    lng={card.map[0].center.lng}
+                    key={card.id}
+                    show={this.state.show}
+                    id={card.id}
+                    card={card}
+                  />
+                ))
+              ) : (null)}
+            </GoogleMapReact>
           </div>
-          <RandomCards card={card} />
+          {/* </div>
+          </div> */}
         </>
       ) : (
           <Loader />
@@ -152,20 +105,23 @@ class Map extends Component {
 }
 
 Map.propTypes = {
-  card: PropTypes.object
+  cardsList: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ])
 };
 
-const mapStateToProps = ({ firebase }, props) => {
-  return ({
-    card: getVal(firebase, `data/cards/${props.match.params.id - 1}`),
-  })
+const mapStateToProps = (state) => {
+  return {
+    cardsList: state.firebase.data.cards
+  }
 };
 
 export default compose(
-  firebaseConnect((props) => {
-    return [
-      { path: `/cards/${props.match.params.id - 1}` },
-    ]
-  }),
-  connect(mapStateToProps)
+  firebaseConnect([
+    'cards'
+  ]),
+  connect(
+    mapStateToProps
+  )
 )(Map)
