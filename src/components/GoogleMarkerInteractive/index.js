@@ -21,11 +21,12 @@ class GoogleMarkerInteractive extends Component {
     }
 
     handleOnMouseEnter = (id) => {
+
         this.setState({ show: !this.state.show })
     }
 
     handleOnMouseLeave = (id) => {
-        this.setState({ show: !this.state.show })
+        this.setState({ show: false })
     }
 
     render() {
@@ -36,6 +37,7 @@ class GoogleMarkerInteractive extends Component {
                 className={styles.marker}
                 onMouseEnter={() => this.handleOnMouseEnter(id)}
                 onMouseLeave={() => this.handleOnMouseLeave(id)}
+                onClick={() => this.handleOnMouseEnter(id)}
             >
                 <img src={marker} alt={text} title={text} className={styles.marker__img} />
                 {

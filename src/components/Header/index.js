@@ -3,8 +3,11 @@ import { Arrow } from 'react-burgers';
 import withSizes from 'react-sizes';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import styles from './Header.module.scss';
 import './Header.module.scss';
+import { withRouter } from "react-router";
 
 class Header extends Component {
 
@@ -29,14 +32,15 @@ class Header extends Component {
 
     render() {
         const { isMenuActive } = this.state;
-        const hrefOfHome = window.location.href.length > 27;
+        // const hrefOfHome = window.location.href.length > 27;
+        const { isHomePage } = this.props;
 
         return (
             <header className={styles.header}>
                 <div className={styles.header__inner}>
                     <NavLink to="/" className={styles.header__logo} exact activeClassName={styles['nav__link--active-header']}>
                         <i className="fas fa-map-marked-alt"></i>
-                        {hrefOfHome && <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>}
+                        {!isHomePage && <span className={styles['header__logo-text']}>Путеводитель по Поскоту</span>}
                     </NavLink>
                     <Arrow onClick={this.burgerHandler}
                         active={isMenuActive}
@@ -47,12 +51,14 @@ class Header extends Component {
                         {
                             isMenuActive ? (
                                 <div className={styles['nav__inner-mobile']}>
-                                    <NavLink to="/contact" className={styles.nav__link} activeClassName={styles['nav__link--active']}>Контакты</NavLink>
+                                    {/* <NavLink to="/map" className={styles.nav__link} exact activeClassName={styles['nav__link--active']}>Карта</NavLink> */}
+                                    <NavLink to="/contact" className={styles.nav__link} exact activeClassName={styles['nav__link--active']}>Контакты</NavLink>
                                 </div>
                             ) : (null)
                         }
                         <div className={styles.nav__inner}>
-                            <NavLink to="/contact" className={styles.nav__link} activeClassName={styles['nav__link--active']}>Контакты</NavLink>
+                            <NavLink to="/map" className={styles.nav__link} exact activeClassName={styles['nav__link--active']}>Карта</NavLink>
+                            <NavLink to="/contact" className={styles.nav__link} exact activeClassName={styles['nav__link--active']}>Контакты</NavLink>
                         </div>
                     </nav>
                 </div>
@@ -62,7 +68,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    isMobile: PropTypes.bool
+    isMobile: PropTypes.bool,
+    isHomePage: PropTypes.bool.isRequired
 };
 
 const mapSizesToProps = ({ width }) => {
@@ -71,4 +78,16 @@ const mapSizesToProps = ({ width }) => {
     })
 };
 
-export default withSizes(mapSizesToProps)(Header);
+const mapStateToProps = (state) => {
+    return {
+        isHomePage: state.homePageReducer.isHomePage
+    }
+}
+
+// export default withSizes(mapSizesToProps)(Header);
+
+export default compose(
+    withRouter,
+    withSizes(mapSizesToProps),
+    connect(mapStateToProps)
+)(Header)

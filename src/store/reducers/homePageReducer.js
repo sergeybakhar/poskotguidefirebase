@@ -1,7 +1,7 @@
 import { HOME_PAGE } from '../actions/actionTypes';
 
 const initialState = {
-    isHomePage: null
+    isHomePage: false
 };
 
 export default function (state = initialState, action) {

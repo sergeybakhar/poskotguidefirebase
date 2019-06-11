@@ -53,7 +53,8 @@ TopCards.propTypes = {
     cardsList: PropTypes.oneOfType([
         PropTypes.array,
         PropTypes.object
-    ])
+    ]),
+    isHomePage: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => {

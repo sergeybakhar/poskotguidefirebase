@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from "react-helmet";
 import GoogleMarkerInteractive from '../GoogleMarkerInteractive';
 
-class Map extends Component {
+class MapPage extends Component {
 
   state = {
     show: false
@@ -38,17 +38,14 @@ class Map extends Component {
   // }
 
   _onChildMouseEnter = (key) => {
-    // console.log(key)
     this.setState({ show: !this.state.show })
   }
 
   _onChildMouseLeave = (key) => {
-    // console.log(key)
     this.setState({ show: !this.state.show })
   }
 
   _onChildClick = (key) => {
-    console.log(key)
     this.setState({ show: !this.state.show })
   }
 
@@ -124,4 +121,4 @@ export default compose(
   connect(
     mapStateToProps
   )
-)(Map)
+)(MapPage)
