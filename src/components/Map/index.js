@@ -63,11 +63,11 @@ class MapPage extends Component {
             {/* <div className={styles.map__map}>
               <div className={styles['map__map-inner']}> */}
             <GoogleMapReact
-              bootstrapURLKeys={{ key: 'AIzaSyAdF-HqWA4VZjOuvCC9Dk9taOG6OXtg9No' }}
+              bootstrapURLKeys={{ key: 'AIzaSyDg5tHJ15X8lBjP3aTryWcd6JEQ_yzav1s' }}
               center={
                 {
-                  lat: 46.574531,
-                  lng: 30.780865
+                  lat: 46.572144,
+                  lng: 30.799893
                 }
               }
               defaultZoom={13}
