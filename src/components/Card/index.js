@@ -51,7 +51,6 @@ class Card extends Component {
 
   render() {
     const { card } = this.props;
-    console.log(card ? card.images : 'hello')
     return (
       card ? (
         <>

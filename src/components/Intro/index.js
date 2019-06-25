@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Intro.module.scss';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Intro = ({ isHomePage }) => {
     // const hrefOfHome = window.location.href.length > 27;
@@ -18,6 +19,11 @@ const Intro = ({ isHomePage }) => {
         </div>
     )
 }
+
+Intro.propTypes = {
+    isHomePage: PropTypes.bool.isRequired
+};
+
 
 const mapStateToProps = (state) => {
     return {

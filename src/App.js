@@ -9,6 +9,7 @@ import Intro from './components/Intro';
 import styles from './App.module.scss';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import TopCards from './components/TopCards';
+import MapPage from './components/Map';
 
 const App = () => (
   <div className={styles.container}>
@@ -18,13 +19,15 @@ const App = () => (
         <Intro />
         <Switch>
           <Route exact path="/" component={CardsList} />
-          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/contact/" component={Contact} />
+          {/* <Route exact path="/map" component={Map} /> */}
+          <Route exact path="/map" component={MapPage} />
           <Route exact path="/:id/:cardURL/" component={Card} />
           <Route exact path="/404.html" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
-        <Footer />
         <TopCards />
+        <Footer />
       </>
     </HashRouter>
   </div>

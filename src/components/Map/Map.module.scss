@@ -1,0 +1,44 @@
+@import '../../scss/main';
+
+.map {
+    // padding: 10px 0 164px;
+    font-family: $font;
+    color: $fontColor;
+    height: 100%;
+    background: #000;
+    padding-bottom: 164px;
+    position: absolute;
+    top: 74px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    @media (max-width: 800px) {
+        padding-bottom: 203px;
+    }
+
+    @media (max-width: 403px) {
+        padding-bottom: 222px;
+    }
+
+    @media (max-width: 320px) {
+        padding-bottom: 242px;
+    }
+
+
+    // &__map {
+    //     position: relative;
+    //     padding-bottom: 100%;
+    //     overflow: hidden;
+    //     margin-bottom: 40px;
+    //     border: 1px solid $borderColor;
+    // }
+
+    // &__map-inner {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    // }
+}

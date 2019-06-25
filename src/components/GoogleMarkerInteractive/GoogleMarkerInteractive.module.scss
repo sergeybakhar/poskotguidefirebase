@@ -1,0 +1,72 @@
+@import '../../scss/main';
+
+
+.marker {
+    &__img {
+        position: absolute;
+        width: 25px;
+        margin-top: -40px;
+        margin-left: -13px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.marker-card {
+    position: absolute;
+    background-color: #fff;
+    width: 226px;
+    height: 228px;
+    top: -258px;
+    left: -211px;
+    z-index: 100;
+    box-shadow: 3px -3px 8px 0px rgba(0, 0, 0, 0.3);
+    display: block;
+    text-decoration: none;
+
+    font-family: $font;
+    background-color: #fff;
+    border-radius: 3px;
+    padding-bottom: 10px;
+
+    &__img {
+        height: auto;
+        width: 100%;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: none;
+    }
+
+    &__text {
+        display: block;
+        // color: #fff;
+        color: $mainBlueColor;
+        font-weight: bold;
+        font-size: 13px;
+        z-index: 11;
+        width: 100%;
+        text-align: center;
+        padding: 10px 15px 0;
+        transition: all .1s ease-in;
+        height: 54px;
+        overflow: hidden;
+    }
+
+    &__link {
+        display: block;
+        text-decoration: none;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #fff;
+        right: 6px;
+    }
+}
